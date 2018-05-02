@@ -1,0 +1,12 @@
+body {
+  background-color: lightblue;
+}
+.center-box {
+  margin: auto;
+  padding: 100px;
+  text-align: center;
+}
+
+h3 {
+  font-family: "Lucida Console", Monaco, monospace;
+}

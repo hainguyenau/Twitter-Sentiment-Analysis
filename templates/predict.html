@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Sentiment Predictions</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+
+  <body>
+
+    <!-- 5 Most recent tweets -->
+    <div class="container">
+      <h3 class="text-center">SENTIMENT PREDICTIONS FOR THE 5 MOST RECENT TWEETS ABOUT: "{{ topic }}"</h3>
+      {% for item in results%}
+
+      <div class="well">
+        <p>{{ item[0] }}</p>
+      <p>(<b>{{item[3]}}</b> on {{item[2]}})</p>
+      </div>
+
+      <h5><em><u><b>Positive</b></u></em>: {{ item[1][0] }} | <em><u><b>Negative</b></u></em>: {{ item[1][1] }}</h5>
+      <h2>{{ item[4] }}</h2>
+      <hr>
+
+      {% endfor %}
+
+      <!-- Plot -->
+      <div class="container">
+        <img src="{{url_for('plot', filename='plot.png', width=100)}}" />
+      </div>
+    </div>
+
+  </body>
+</html>
